@@ -2,6 +2,16 @@
   "cloud": true,
   "pages": [
     "pages/index/index",
+    "pages/add-comment/add-comment",
+    "pages/comment/comment",
+    "pages/comments/comments",
+    "pages/common/common",
+    "pages/detail/detail",
+    "pages/list/list",
+    "pages/preview-comment/preview-comment",
+    "pages/user/user",
+
+    "pages/index_demo/index",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
     "pages/databaseGuide/databaseGuide",
@@ -13,7 +23,30 @@
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "云开发 QuickStart",
+    "navigationBarTitleText": "看看侃侃电影",
     "navigationBarTextStyle": "black"
-  }
+  },
+    "tabBar": {
+      "selectedColor": "#1296db",
+      "list": [
+        {
+          "pagePath": "pages/list/list",
+          "text": "热门",
+          "iconPath": "images/hot.png",
+          "selectedIconPath": "images/hot-d.png"
+        },
+        {
+          "pagePath": "pages/index/index",
+          "text": "首页",
+          "iconPath": "images/home.png",
+          "selectedIconPath": "images/home-d.png"
+        },
+        {
+          "pagePath": "pages/user/user",
+          "text": "我的",
+          "iconPath": "images/my.png",
+          "selectedIconPath": "images/my-d.png"
+        }
+      ]
+    }
 }
