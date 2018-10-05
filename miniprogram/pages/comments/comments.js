@@ -15,8 +15,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const { id } = options
-    
+    this.getComments(options)
+  },
+
+  // 获得评论列表函数
+  getComments(callback, options) {
+    const { id } = this.options
+
     qcloud.request({
       url: config.service.getComments(id),
       success: ({ data }) => {
@@ -28,6 +33,9 @@ Page({
           })
         })
         this.setData({ comments })
+      },
+      complete: () => {
+        typeof callback === 'function' && callback()
       }
     })
   },
@@ -64,7 +72,9 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    this.getComments(() => {
+      wx.stopPullDownRefresh()
+    })
   },
 
   /**

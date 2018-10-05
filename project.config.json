@@ -30,15 +30,50 @@
 		"game": {
 			"list": []
 		},
-		"miniprogram": {
-			"current": 0,
-			"list": [
-				{
-					"id": -1,
-					"name": "db guide",
-					"pathName": "pages/databaseGuide/databaseGuide"
-				}
-			]
-		}
+		// "miniprogram": {
+		// 	"current": 0,
+		// 	"list": [
+		// 		{
+		// 			"id": -1,
+		// 			"name": "db guide",
+		// 			"pathName": "pages/databaseGuide/databaseGuide"
+		// 		}
+		// 	]
+		// }
+    "miniprogram": {
+      "current": 3,
+      "list": [
+        {
+          "id": -1,
+          "name": "detail",
+          "pathName": "pages/detail/detail",
+          "query": "id=1"
+        },
+        {
+          "id": -1,
+          "name": "list",
+          "pathName": "pages/list/list",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "user",
+          "pathName": "pages/user/user",
+          "query": ""
+        },
+        {
+          "id": 3,
+          "name": "comments",
+          "pathName": "pages/comments/comments",
+          "query": "id=1"
+        },
+        {
+          "id": -1,
+          "name": "comment",
+          "pathName": "pages/comment/comment",
+          "query": "id=1"
+        }
+      ]
+    }
 	}
 }
