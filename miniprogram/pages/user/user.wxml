@@ -1,9 +1,14 @@
 <!--pages/user/user.wxml-->
 <view class="container">
+
+  <!-- 改进：可以单独抽离 -->
   <view wx:if="{{!userInfo}}">
     <button class="unlogin-btn" open-type='getUserInfo' bindgetuserinfo='getUserInfo'>微信登录</button>
   </view>
+
   <block wx:else>
+    <!-- 收藏的评论 -->
+    <text>收藏的评论</text>
     <navigator class="movie-card" url="{{'/pages/comment/comment?id=' + item.id }}" wx:for="{{ comments }}" wx:key="{{item.id}}">
       <image src="{{ item.cover }}" mode="aspectFit"/>
       <view class="movie-card-body">
@@ -15,5 +20,22 @@
         </view>
       </view>
     </navigator>
+
+    <!-- 发布的评论 -->
+    <text>发布的评论</text>
+    <navigator class="movie-card" url="{{'/pages/comment/comment?id=' + item.id }}" wx:for="{{ comments }}" wx:key="{{item.id}}">
+      <image src="{{ item.cover }}" mode="aspectFit"/>
+      <view class="movie-card-body">
+        <view class="title">{{ item.title }}</view>
+        <view class="comment-body">{{ item.content }}</view>
+        <view class="user-info"> 
+          <image src="{{ item.user_info.avatarUrl }}" />
+          <view>{{ item.user_info.nickName }}</view>
+        </view>
+      </view>
+    </navigator>
+
   </block>
+
+
 </view>

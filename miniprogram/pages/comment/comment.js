@@ -34,6 +34,7 @@ Page({
   },
 
   handleFavorite() {
+    /// 改进：如何加入判定影评是否已被收藏的逻辑？
     const { comment } = this.data
     app.checkSession({
       success: () => {

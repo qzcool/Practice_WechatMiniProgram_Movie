@@ -33,6 +33,7 @@ Page({
           })
         })
         this.setData({ comments })
+        console.log(comments)
       },
       complete: () => {
         typeof callback === 'function' && callback()

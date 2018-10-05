@@ -10,7 +10,8 @@ Page({
    */
   data: {
     userInfo: null,
-    comments: []
+    comments: [], // 收藏的评论
+    comments_published: [] // 发布的评论
   },
 
   /**
@@ -21,6 +22,7 @@ Page({
       success: (userInfo) => {
         this.setData(userInfo)
         this.getFavorites()
+        this.getPublished()
       }
     })
   },
@@ -33,6 +35,7 @@ Page({
     })
   },
 
+  // 获取已收藏影评的函数
   getFavorites() {
     qcloud.request({
       url: config.service.getFavorites(),
@@ -45,6 +48,37 @@ Page({
           })
         })
         this.setData({ comments })
+      }
+    })
+  },
+
+  // 获取已发布影评的函数
+  getPublished() {
+    this.getCommentsPublished()
+    console.log(this.data.comments_published)
+    // 改进：然后筛选出其中openid为当前登录用户的评论，作为comments_published列表供user.wxml调用
+  },
+
+  // 获得评论列表函数
+  /// 改进：将此函数移动到app.js中；将用户ID的筛选判定提前到forEach中的可能性
+  getCommentsPublished(callback, options) {
+    const { id } = this.options
+
+    qcloud.request({
+      url: config.service.getComments(id),
+      success: ({ data }) => {
+        const comments = []
+        data.data.forEach(comment => {
+          comments.push({
+            ...comment,
+            user_info: JSON.parse(comment.user_info)
+          })
+        })
+        this.setData({ comments_published }) // 要抽象出来作为母函数参数
+        console.log(comments_published)
+      },
+      complete: () => {
+        typeof callback === 'function' && callback()
       }
     })
   },
