@@ -98,6 +98,7 @@ Page({
 
   handleAddComment() {
     const { movie } = this.data
+    
 
     app.checkSession({
       success: () => {

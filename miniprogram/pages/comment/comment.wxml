@@ -12,7 +12,7 @@
 
     <div class="panel">
       <button class="btn" bindtap="handleFavorite">收藏影评</button>
-      <button class="btn" bindtap="handleAddComment">写影评</button>
+      <!-- <button class="btn" bindtap="handleAddComment">写影评</button> -->
     </div>
   </block>
 </view>
