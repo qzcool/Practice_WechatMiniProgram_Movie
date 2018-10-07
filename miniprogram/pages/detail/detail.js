@@ -46,7 +46,7 @@ Page({
     console.log(userInfo)
 
     // 登陆检查
-    if (!userInfo) { //userInfo
+    if (app.login() != 'success') { //userInfo
       console.log('您尚未登陆。')
       wx.showToast({
         title: '您尚未登陆。',
