@@ -13,12 +13,15 @@ Page({
     comments:null,
     userInfo:null,
     // user_openId:null,
+    userInfo_login: null,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getUserInfo()
+
     const id = options.id
 
     qcloud.request({
@@ -33,7 +36,6 @@ Page({
     })
     // console.log(id)
     this.getComments()
-    this.getUserInfo()
   },
 
   handleAddComment() {
@@ -41,12 +43,23 @@ Page({
     const { comments } = this.data
     const { userInfo} = this.data
 
+    app.checkSession({
+      success: (userInfo) => {
+        // this.setData(userInfo)
+        console.log(userInfo)
+        // const { userInfo } = this.data
+        this.setData({
+          userInfo_login: userInfo
+        })
+      }
+    })
+
     console.log(comments)
     console.log(movie)
-    console.log(userInfo)
+    // console.log(userInfo)
 
     // 登陆检查
-    if (app.login() != 'success') { //userInfo
+    if (!this.data.userInfo_login) { //
       console.log('您尚未登陆。')
       wx.showToast({
         title: '您尚未登陆。',
@@ -61,7 +74,7 @@ Page({
     // let comments = this.data.comments
     let review = {}
     for (let i = 0; i < comments.length; i++) {
-      if (comments[i].open_id == userInfo.userInfo.openId) {
+      if (comments[i].open_id == this.data.userInfo_login.userInfo.openId) {
         review = comments[i]
         reviewed = true
         break

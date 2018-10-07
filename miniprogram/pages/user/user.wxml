@@ -23,7 +23,7 @@
 
     <!-- 发布的评论 -->
     <text>发布的评论</text>
-    <navigator class="movie-card" url="{{'/pages/comment/comment?id=' + item.id }}" wx:for="{{ comments }}" wx:key="{{item.id}}">
+    <navigator class="movie-card" url="{{'/pages/comment/comment?id=' + item.id }}" wx:for="{{ comments_published }}" wx:key="{{item.id}}">
       <image src="{{ item.cover }}" mode="aspectFit"/>
       <view class="movie-card-body">
         <view class="title">{{ item.title }}</view>
